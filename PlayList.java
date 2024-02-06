@@ -60,8 +60,8 @@ class PlayList {
 
     /** Removes the last track from this list. If the list is empty, does nothing. */
      public void removeLast() {
-         if (size != 0) {
-             tracks[size-1]= null;
+         if (size > 0) {
+             tracks[size-1] = null;
              size--;
              }
      }
