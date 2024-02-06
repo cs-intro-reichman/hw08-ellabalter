@@ -53,7 +53,7 @@ class PlayList {
            sb.append(tracks[i].getTitle());
            sb.append(tracks[i].getArtist());
            sb.append(tracks[i].getArtist());
-            trackList= trackList + "\n" + tracks[i].toString();
+            trackList= trackList + "\n" + sb.toString();
         }
         return trackList;
     }
@@ -122,7 +122,6 @@ class PlayList {
         if(i < size && i >= 0){
                 for(int j = i; j < size; j++ ){
                     tracks[j] = tracks[j+1];
-                    this.removeLast();
                 }
             }
 
@@ -141,7 +140,7 @@ class PlayList {
 
     /** Removes the first track from this list. If the list is empty, does nothing. */
     public void removeFirst() {
-        this.remove(1);
+        this.remove(0);
     }
     
     /** Adds all the tracks in the other list to the end of this list. 
@@ -151,9 +150,10 @@ class PlayList {
          int combinedSize = size + other.getSize();
          if(combinedSize <= maxSize){
              for(int i = size; i < combinedSize; i++ ){
-                 this.add(i, other.getTrack(i));
+                 for(int j = 0; j < other.getSize(); j++){
+                 this.add(i, other.getTrack(j));
              }
-             size = size + other.getSize();
+             size = combinedSize;
          }
     }
 
