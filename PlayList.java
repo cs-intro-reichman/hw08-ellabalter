@@ -100,6 +100,7 @@ class PlayList {
      *  is full, does nothing and returns false. Otherwise, inserts the track and
      *  returns true. */
     public boolean add(int i, Track track) {
+        Track temp;
         if(size < maxSize) {
             if (i == size) {
                 tracks[i] = track;
@@ -107,8 +108,8 @@ class PlayList {
                 return true;
             }
             if (i >= 0 && i < size) {
-                for (int j = i; j < size; j++) {
-                    tracks[j + 1] = tracks[j];
+                for (int j = size; j > i; j--) {
+                    tracks[j] = tracks[j-1];
                 }
                 tracks[i] = track;
                 size++;
