@@ -43,12 +43,15 @@ class Track {
     private String formattedDuration(int totalSeconds) {
         int minutes;
         int seconds;
-        String duration = "";
+        String formattedDuration = "";
         seconds = totalSeconds % 60;
         minutes = (totalSeconds - seconds)/ 60;
-        duration = String.valueOf(seconds) +":"+ String.valueOf(minutes) ;
+        if(seconds < 10){
+            formattedDuration = String.valueOf(minutes) +":0"+ String.valueOf(seconds) ;
+            return formattedDuration;
+        }
+            formattedDuration = String.valueOf(seconds) + ":" + String.valueOf(minutes);
 
-        //// replace the following statement with your code
-        return duration;
+        return formattedDuration;
     }
 }
