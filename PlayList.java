@@ -86,7 +86,7 @@ class PlayList {
         int index;
         for(int i = 0; i < size; i++){
             if(tracks[i].getTitle().equals(title)){
-                index = i+1;
+                index = i;
                 return index;
             }
         }
@@ -148,14 +148,15 @@ class PlayList {
     //// An elegant and terribly inefficient implementation.
      public void add(PlayList other) {
          int combinedSize = size + other.getSize();
-         if(combinedSize <= maxSize){
-             for(int i = size; i < combinedSize; i++ ){
-                 for(int j = 0; j < other.getSize(); j++){
-                 this.add(i, other.getTrack(j));
+         if (combinedSize <= maxSize) {
+             for (int i = size; i < combinedSize; i++) {
+                 for (int j = 0; j < other.getSize(); j++) {
+                     this.add(i, other.getTrack(j));
+                 }
+                 size = combinedSize;
              }
-             size = combinedSize;
          }
-    }
+     }
 
     /** Returns the index in this list of the track that has the shortest duration,
      *  starting the search in location start. For example, if the durations are 
