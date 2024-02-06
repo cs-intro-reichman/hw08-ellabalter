@@ -16,10 +16,6 @@ class Track {
     /** Returns this track's data as "artist, title, minutes:seconds".
      *  For example, "John Lennon, Imagine, 3:07" */
     public String toString() {
-        String artist = this.artist;
-        String title = this.title;
-       String duration = String.valueOf(this.duration);
-
         return artist + ", " + title + ", " + duration;
     }
 
