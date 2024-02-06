@@ -117,7 +117,7 @@ class PlayList {
      *  If the list is empty, or the given index is negative or too big for this list, 
      *  does nothing and returns -1. */
     public void remove(int i) {
-        if(i < size && i >= 0 ){
+        if(i < size && i >= 0){
                 for(int j = i; j < size -1 ; j++ ){
                     tracks[j] = tracks[j+1];
                 }
@@ -185,8 +185,16 @@ class PlayList {
      *  rather than returning a new, sorted playlist, the method sorts
      *  the list on which it was called (this list). */
     public void sortedInPlace() {
+        int minIndex;
+        Track temp;
         for(int i = 0; i < size; i++){
-           tracks[i] = getTrack(minIndex(i));
+            minIndex = minIndex(i);
+            if(i != minIndex){
+                temp = tracks[i];
+                tracks[i] = tracks[minIndex];
+                tracks[minIndex] = temp;
+            }
+
         }
         // Uses the selection sort algorithm,  
         // calling the minIndex method in each iteration.
